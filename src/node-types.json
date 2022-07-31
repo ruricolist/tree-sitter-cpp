@@ -610,6 +610,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "export_specifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1299,6 +1309,10 @@
           "named": true
         },
         {
+          "type": "export_specifier",
+          "named": true
+        },
+        {
           "type": "ms_declspec_modifier",
           "named": true
         },
@@ -1925,6 +1939,10 @@
           "named": true
         },
         {
+          "type": "export_specifier",
+          "named": true
+        },
+        {
           "type": "ms_declspec_modifier",
           "named": true
         },
@@ -2227,6 +2245,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "export_specifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -3074,6 +3102,10 @@
           "named": true
         },
         {
+          "type": "export_specifier",
+          "named": true
+        },
+        {
           "type": "field_initializer_list",
           "named": true
         },
@@ -3454,6 +3486,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "export_specifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -3611,9 +3653,13 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "export_specifier",
+          "named": true
+        },
         {
           "type": "identifier",
           "named": true
@@ -3653,6 +3699,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "export_specifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -5327,6 +5383,10 @@
           "named": true
         },
         {
+          "type": "export_specifier",
+          "named": true
+        },
+        {
           "type": "ms_declspec_modifier",
           "named": true
         },
@@ -5478,6 +5538,10 @@
           "named": true
         },
         {
+          "type": "export_specifier",
+          "named": true
+        },
+        {
           "type": "function_definition",
           "named": true
         },
@@ -5581,6 +5645,10 @@
         },
         {
           "type": "attribute_specifier",
+          "named": true
+        },
+        {
+          "type": "export_specifier",
           "named": true
         },
         {
@@ -5939,6 +6007,10 @@
       "required": false,
       "types": [
         {
+          "type": "export_specifier",
+          "named": true
+        },
+        {
           "type": "type_qualifier",
           "named": true
         }
@@ -6112,6 +6184,10 @@
           "named": true
         },
         {
+          "type": "export_specifier",
+          "named": true
+        },
+        {
           "type": "ms_declspec_modifier",
           "named": true
         },
@@ -6192,9 +6268,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "export_specifier",
+          "named": true
+        },
         {
           "type": "identifier",
           "named": true

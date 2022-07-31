@@ -48,6 +48,14 @@ module.exports = grammar(C, {
     [$._binary_fold_operator, $._fold_operator],
     [$.expression_statement, $.for_statement],
     [$.init_statement, $.for_statement],
+
+    // all of these can be parsed as (X_specifier (export_specifier) ...)
+    // or (export_specifier) (X_specifier ...)
+    [$.enum_specifier],
+    [$.class_specifier],
+    [$.struct_specifier],
+    [$.union_specifier],
+
     [$.storage_class_specifier, $.template_instantiation],
   ]),
 
@@ -127,6 +135,7 @@ module.exports = grammar(C, {
     // a compound statement. This introduces a shift/reduce conflict that needs to be resolved
     // with an associativity.
     class_specifier: $ => prec.right(seq(
+      optional($.export_specifier),
       'class',
       optional($.ms_declspec_modifier),
       optional($.attribute_declaration),
@@ -142,6 +151,7 @@ module.exports = grammar(C, {
     )),
 
     union_specifier: $ => prec.right(seq(
+      optional($.export_specifier),
       'union',
       optional($.ms_declspec_modifier),
       optional($.attribute_declaration),
@@ -157,6 +167,7 @@ module.exports = grammar(C, {
     )),
 
     struct_specifier: $ => prec.right(seq(
+      optional($.export_specifier),
       'struct',
       optional($.ms_declspec_modifier),
       optional($.attribute_declaration),
@@ -177,12 +188,16 @@ module.exports = grammar(C, {
       alias($.qualified_type_identifier, $.qualified_identifier)
     )),
 
-    function_definition: ($, original) => ({
-      ...original,
-      members: original.members.map(
-        e => e.name !== 'body'
-          ? e
-          : field('body', choice(e.content, $.try_statement))) }),
+    function_definition: ($, original) => seq(
+      optional($.export_specifier), 
+      {
+        ...original,
+        members: original.members.map(
+          e => e.name !== 'body'
+            ? e
+            : field('body', choice(e.content, $.try_statement))) 
+      }
+    ),
 
     virtual_specifier: $ => choice(
       'final', // the only legal value here for classes
@@ -218,6 +233,7 @@ module.exports = grammar(C, {
     ),
 
     enum_specifier: $ => prec.left(seq(
+      optional($.export_specifier),
       'enum',
       optional(choice('class', 'struct')),
       choice(
@@ -259,6 +275,7 @@ module.exports = grammar(C, {
       ';'
     ),
 
+    // NB: this is a C++20 specifier from the Modules TS, not the pre-C++11 one
     export_specifier: $ => 'export',
 
     _module_name: $ => alias($.identifier, $.module_name),
@@ -301,7 +318,24 @@ module.exports = grammar(C, {
       field('body', $.declaration_list)
     ),
 
+    // repeat exportable C definitions
+    linkage_specification: ($, original) => seq(
+      optional($.export_specifier),
+      original,
+    ),
+
+    declaration: ($, original) => seq(
+      optional($.export_specifier),
+      original,
+    ),
+
+    type_definition: ($, original) => seq(
+      optional($.export_specifier),
+      original,
+    ),
+
     template_declaration: $ => seq(
+      optional($.export_specifier),
       'template',
       field('parameters', $.template_parameter_list),
       optional($.requires_clause),
@@ -320,6 +354,7 @@ module.exports = grammar(C, {
     ),
 
     template_instantiation: $ => seq(
+      optional($.export_specifier),
       optional(alias('extern', $.storage_class_specifier)),
       'template',
       optional($._declaration_specifiers),
@@ -680,6 +715,7 @@ module.exports = grammar(C, {
     ),
 
     namespace_definition: $ => seq(
+      optional($.export_specifier),
       'namespace',
       field('name', optional(
         choice(
@@ -690,6 +726,7 @@ module.exports = grammar(C, {
     ),
 
     namespace_alias_definition: $ => seq(
+      optional($.export_specifier),
       'namespace',
       field('name', $.identifier),
       '=',
@@ -711,6 +748,7 @@ module.exports = grammar(C, {
     ),
 
     using_declaration: $ => seq(
+      optional($.export_specifier),
       'using',
       optional('namespace'),
       choice(
@@ -721,6 +759,7 @@ module.exports = grammar(C, {
     ),
 
     alias_declaration: $ => seq(
+      optional($.export_specifier),
       'using',
       field('name', $._type_identifier),
       '=',
