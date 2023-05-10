@@ -272,6 +272,10 @@
     "named": true,
     "subtypes": [
       {
+        "type": "attributed_statement",
+        "named": true
+      },
+      {
         "type": "break_statement",
         "named": true
       },
@@ -499,6 +503,14 @@
       "required": false,
       "types": [
         {
+          "type": "attribute_declaration",
+          "named": true
+        },
+        {
+          "type": "attribute_specifier",
+          "named": true
+        },
+        {
           "type": "noexcept",
           "named": true
         },
@@ -520,6 +532,10 @@
         },
         {
           "type": "type_qualifier",
+          "named": true
+        },
+        {
+          "type": "virtual_specifier",
           "named": true
         }
       ]
@@ -612,9 +628,13 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "attribute_declaration",
+          "named": true
+        },
         {
           "type": "export_specifier",
           "named": true
@@ -776,6 +796,18 @@
             "named": false
           },
           {
+            "type": "and_eq",
+            "named": false
+          },
+          {
+            "type": "or_eq",
+            "named": false
+          },
+          {
+            "type": "xor_eq",
+            "named": false
+          },
+          {
             "type": "|=",
             "named": false
           }
@@ -914,6 +946,14 @@
       "required": true,
       "types": [
         {
+          "type": "access_specifier",
+          "named": true
+        },
+        {
+          "type": "attribute_declaration",
+          "named": true
+        },
+        {
           "type": "qualified_identifier",
           "named": true
         },
@@ -923,6 +963,10 @@
         },
         {
           "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "virtual",
           "named": true
         }
       ]
@@ -1016,6 +1060,30 @@
           },
           {
             "type": "^",
+            "named": false
+          },
+          {
+            "type": "and",
+            "named": false
+          },
+          {
+            "type": "bitand",
+            "named": false
+          },
+          {
+            "type": "bitor",
+            "named": false
+          },
+          {
+            "type": "not_eq",
+            "named": false
+          },
+          {
+            "type": "or",
+            "named": false
+          },
+          {
+            "type": "xor",
             "named": false
           },
           {
@@ -1487,10 +1555,6 @@
           "named": true
         },
         {
-          "type": "attributed_statement",
-          "named": true
-        },
-        {
           "type": "concept_definition",
           "named": true
         },
@@ -1737,6 +1801,10 @@
           {
             "type": "&&",
             "named": false
+          },
+          {
+            "type": "and",
+            "named": false
           }
         ]
       },
@@ -1818,6 +1886,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "or",
+            "named": false
+          },
           {
             "type": "||",
             "named": false
@@ -1955,7 +2027,7 @@
           "named": true
         },
         {
-          "type": "virtual_function_specifier",
+          "type": "virtual",
           "named": true
         }
       ]
@@ -1979,10 +2051,6 @@
         },
         {
           "type": "alias_declaration",
-          "named": true
-        },
-        {
-          "type": "attributed_statement",
           "named": true
         },
         {
@@ -2421,7 +2489,7 @@
           "named": true
         },
         {
-          "type": "virtual_function_specifier",
+          "type": "virtual",
           "named": true
         }
       ]
@@ -2750,6 +2818,30 @@
             "named": false
           },
           {
+            "type": "and",
+            "named": false
+          },
+          {
+            "type": "bitand",
+            "named": false
+          },
+          {
+            "type": "bitor",
+            "named": false
+          },
+          {
+            "type": "not_eq",
+            "named": false
+          },
+          {
+            "type": "or",
+            "named": false
+          },
+          {
+            "type": "xor",
+            "named": false
+          },
+          {
             "type": "|",
             "named": false
           },
@@ -2863,7 +2955,7 @@
           "named": true
         },
         {
-          "type": "virtual_function_specifier",
+          "type": "virtual",
           "named": true
         }
       ]
@@ -2873,12 +2965,26 @@
     "type": "for_statement",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_statement",
+            "named": true
+          }
+        ]
+      },
       "condition": {
         "multiple": false,
         "required": false,
         "types": [
           {
             "type": "_expression",
+            "named": true
+          },
+          {
+            "type": "comma_expression",
             "named": true
           }
         ]
@@ -2915,16 +3021,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "_statement",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -2995,6 +3091,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "attribute_declaration",
+          "named": true
+        },
         {
           "type": "attribute_specifier",
           "named": true
@@ -3122,11 +3222,15 @@
           "named": true
         },
         {
+          "type": "try_statement",
+          "named": true
+        },
+        {
           "type": "type_qualifier",
           "named": true
         },
         {
-          "type": "virtual_function_specifier",
+          "type": "virtual",
           "named": true
         }
       ]
@@ -3646,7 +3750,7 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
+            "type": "namespace_identifier",
             "named": true
           }
         ]
@@ -3661,11 +3765,11 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "namespace_identifier",
           "named": true
         },
         {
-          "type": "qualified_identifier",
+          "type": "nested_namespace_specifier",
           "named": true
         }
       ]
@@ -3690,11 +3794,11 @@
         "required": false,
         "types": [
           {
-            "type": "identifier",
+            "type": "namespace_identifier",
             "named": true
           },
           {
-            "type": "namespace_definition_name",
+            "type": "nested_namespace_specifier",
             "named": true
           }
         ]
@@ -3712,19 +3816,19 @@
     }
   },
   {
-    "type": "namespace_definition_name",
+    "type": "nested_namespace_specifier",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "identifier",
+          "type": "namespace_identifier",
           "named": true
         },
         {
-          "type": "namespace_definition_name",
+          "type": "nested_namespace_specifier",
           "named": true
         }
       ]
@@ -3871,7 +3975,7 @@
           "named": true
         },
         {
-          "type": "virtual_function_specifier",
+          "type": "virtual",
           "named": true
         }
       ]
@@ -3952,7 +4056,7 @@
           "named": true
         },
         {
-          "type": "virtual_function_specifier",
+          "type": "virtual",
           "named": true
         }
       ]
@@ -4038,7 +4142,7 @@
           "named": true
         },
         {
-          "type": "virtual_function_specifier",
+          "type": "virtual",
           "named": true
         }
       ]
@@ -4380,10 +4484,6 @@
           "named": true
         },
         {
-          "type": "attributed_statement",
-          "named": true
-        },
-        {
           "type": "concept_definition",
           "named": true
         },
@@ -4500,10 +4600,6 @@
         },
         {
           "type": "alias_declaration",
-          "named": true
-        },
-        {
-          "type": "attributed_statement",
           "named": true
         },
         {
@@ -4715,10 +4811,6 @@
           "named": true
         },
         {
-          "type": "attributed_statement",
-          "named": true
-        },
-        {
           "type": "concept_definition",
           "named": true
         },
@@ -4860,10 +4952,6 @@
         },
         {
           "type": "alias_declaration",
-          "named": true
-        },
-        {
-          "type": "attributed_statement",
           "named": true
         },
         {
@@ -5063,6 +5151,10 @@
         "required": false,
         "types": [
           {
+            "type": "decltype",
+            "named": true
+          },
+          {
             "type": "dependent_name",
             "named": true
           },
@@ -5076,6 +5168,36 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "raw_string_literal",
+    "named": true,
+    "fields": {
+      "delimiter": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "raw_string_delimiter",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "raw_string_content",
+          "named": true
+        },
+        {
+          "type": "raw_string_delimiter",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -5542,6 +5664,10 @@
           "named": true
         },
         {
+          "type": "friend_declaration",
+          "named": true
+        },
+        {
           "type": "function_definition",
           "named": true
         },
@@ -5664,7 +5790,7 @@
           "named": true
         },
         {
-          "type": "virtual_function_specifier",
+          "type": "virtual",
           "named": true
         }
       ]
@@ -5861,10 +5987,6 @@
           "named": true
         },
         {
-          "type": "attributed_statement",
-          "named": true
-        },
-        {
           "type": "concept_definition",
           "named": true
         },
@@ -5972,6 +6094,10 @@
       "types": [
         {
           "type": "catch_clause",
+          "named": true
+        },
+        {
+          "type": "field_initializer_list",
           "named": true
         }
       ]
@@ -6128,6 +6254,14 @@
           },
           {
             "type": "-",
+            "named": false
+          },
+          {
+            "type": "compl",
+            "named": false
+          },
+          {
+            "type": "not",
             "named": false
           },
           {
@@ -6355,7 +6489,7 @@
           "named": true
         },
         {
-          "type": "virtual_function_specifier",
+          "type": "virtual",
           "named": true
         }
       ]
@@ -6377,7 +6511,7 @@
     }
   },
   {
-    "type": "virtual_function_specifier",
+    "type": "virtual",
     "named": true,
     "fields": {}
   },
@@ -6633,11 +6767,23 @@
     "named": false
   },
   {
+    "type": "LR\"",
+    "named": false
+  },
+  {
+    "type": "R\"",
+    "named": false
+  },
+  {
     "type": "U\"",
     "named": false
   },
   {
     "type": "U'",
+    "named": false
+  },
+  {
+    "type": "UR\"",
     "named": false
   },
   {
@@ -6717,8 +6863,24 @@
     "named": false
   },
   {
+    "type": "and",
+    "named": false
+  },
+  {
+    "type": "and_eq",
+    "named": false
+  },
+  {
     "type": "auto",
     "named": true
+  },
+  {
+    "type": "bitand",
+    "named": false
+  },
+  {
+    "type": "bitor",
+    "named": false
   },
   {
     "type": "break",
@@ -6751,6 +6913,10 @@
   {
     "type": "comment",
     "named": true
+  },
+  {
+    "type": "compl",
+    "named": false
   },
   {
     "type": "concept",
@@ -6917,6 +7083,14 @@
     "named": false
   },
   {
+    "type": "not",
+    "named": false
+  },
+  {
+    "type": "not_eq",
+    "named": false
+  },
+  {
     "type": "null",
     "named": true
   },
@@ -6930,6 +7104,14 @@
   },
   {
     "type": "operator",
+    "named": false
+  },
+  {
+    "type": "or",
+    "named": false
+  },
+  {
+    "type": "or_eq",
     "named": false
   },
   {
@@ -6961,7 +7143,11 @@
     "named": false
   },
   {
-    "type": "raw_string_literal",
+    "type": "raw_string_content",
+    "named": true
+  },
+  {
+    "type": "raw_string_delimiter",
     "named": true
   },
   {
@@ -7069,6 +7255,14 @@
     "named": false
   },
   {
+    "type": "u8R\"",
+    "named": false
+  },
+  {
+    "type": "uR\"",
+    "named": false
+  },
+  {
     "type": "union",
     "named": false
   },
@@ -7090,6 +7284,14 @@
   },
   {
     "type": "while",
+    "named": false
+  },
+  {
+    "type": "xor",
+    "named": false
+  },
+  {
+    "type": "xor_eq",
     "named": false
   },
   {
